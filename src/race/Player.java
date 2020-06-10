@@ -17,5 +17,8 @@ public class Player {
 	public void setRecord(int record) {
 		this.record = record;
 	}
+	public void showRecord() {
+		System.out.println("이름 : "+name+", 기록 : "+record);
+	}
 	
 }
