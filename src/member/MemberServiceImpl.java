@@ -2,26 +2,43 @@ package member;
 
 public class MemberServiceImpl implements MemberService {
 	private Member[] members;
-	private int idx;
+	private int count;
 	
 	public MemberServiceImpl() {
 		members = new Member[3];
-		idx = 0;
+		count = 0;
 	}
 
 	@Override
 	public void join(Member member) {
-		System.out.println("App에서 넘어온 회원정보");
-		System.out.println(member.toString());
-		members[idx] = member;
-		System.out.println("배열에 저장된 회원번호");
-		System.out.println(members[idx]);
+		members[count] = member;
+		count++;
 		
 	}
 
 	@Override
-	public void login() {
-		
+	public void login(Member member) {
+		for(int i=0;i<members.length; i++) {
+			if(member.getUserid().equals(members[i].getUserid())
+					&&
+				member.getPassword().equals(members[i].getPassword())) {
+				System.out.println("로그인 성공");
+				break;
+			}else {
+				System.out.println("로그인 실패");
+			}
+		}
+	}
+
+	@Override
+	public Member[] list() {
+		return members;
+	}
+
+	@Override
+	public String existId(Member member) {
+		System.out.println("중복체크할 아이디:"+member.getUserid());
+		return null;
 	}
 
 }
